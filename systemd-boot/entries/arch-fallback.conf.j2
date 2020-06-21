@@ -1,0 +1,5 @@
+title   Arch Linux
+linux   /vmlinuz-linux
+initrd  /intel-ucode.img
+initrd  /initramfs-linux-fallback.img
+options cryptdevice=UUID={{ part_root_uuid | mandatory }}:ArchCrypt root="/dev/mapper/ArchCrypt" rw

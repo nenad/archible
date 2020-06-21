@@ -1,0 +1,278 @@
+---
+- name: "Bootstrap machine"
+  hosts: all
+  gather_facts: no
+  vars_prompt:
+    - name: disk_id
+      prompt: Disk identifier (ex. /dev/sdx)
+      private: no
+    - name: disk_password
+      prompt: Disk encryption password
+    - name: disk_password_repeat
+      prompt: Disk encryption password (repeat)
+    - name: hostname
+      prompt: Hostname of the machine
+      private: no
+    - name: username
+      prompt: Username of this host
+      private: no
+    - name: user_password
+      prompt: Password for the username
+    - name: user_password_repeat
+      prompt: Password for the username (repeat)
+
+  # TODO Swap configurable or equal to the RAM
+  # TODO Add note for modifying cow_spacesize boot parameter (ex. cow_spacesize=4G)
+
+  # Assumptions
+  # - /mnt is used as chroot directory
+  # - three partitions are used (1 EFI, 1 swap, 1 root)
+
+  tasks:
+  - name: Compare passwords
+    fail:
+      msg: Disk encryption passwords are not the same
+    when: disk_password != disk_password_repeat
+
+  - name: Compare user passwords
+    fail:
+      msg: User passwords are not the same
+    when: user_password != user_password_repeat
+
+  - name: Write disk password to temporary file
+    copy: content="{{ disk_password }}" dest=/tmp/disk_password
+
+  - name: Run timedatectl status
+    command: /usr/bin/timedatectl status
+    changed_when: False
+    check_mode: no
+    register: timedatectl_result
+
+  - name: Set timezone
+    command: /usr/bin/timedatectl set-timezone Europe/Berlin
+    when: "'Europe/Berlin' not in timedatectl_result.stdout"
+
+  - name: Enable ntp
+    command: /usr/bin/timedatectl set-ntp true
+    when: "'Network time on: no' in timedatectl_result.stdout"
+
+  # add newline because locale-gen doesn't work without it
+  - name: Specify locale
+    copy: content="en_US.UTF-8 UTF-8\n" dest=/etc/locale.gen
+    register: locale
+
+  - name: Generate locale
+    command: locale-gen
+    when: locale.changed
+
+  - name: Set locale
+    copy: content="LANG=en_US.UTF-8" dest=/etc/locale.conf
+
+  - name: Setup EFI partition
+    parted:
+      device: "{{ disk_id }}"
+      label: gpt
+      part_start: 1MiB
+      part_end: 1GiB
+      name: EFI
+      align: optimal
+      number: 1
+      flags: esp
+      state: present
+
+  - name: Setup swap partition
+    parted:
+      device: "{{ disk_id }}"
+      label: gpt
+      part_start: 1GiB
+      part_end: 17GiB
+      name: swap
+      align: optimal
+      number: 2
+      state: present
+
+  - name: Setup root partition
+    parted:
+      device: "{{ disk_id }}"
+      label: gpt/
+      part_start: 17GiB
+      part_end: 100%
+      name: root
+      align: optimal
+      number: 3
+      state: present
+
+  - name: Get EFI partition
+    shell: blkid | grep 'PARTLABEL="EFI"' | cut -d ':' -f 1
+    register: part_efi_result
+    changed_when: False
+    failed_when: not part_efi_result.stdout
+  - name: Set EFI partition fact
+    set_fact:
+      part_efi={{ part_efi_result.stdout }}
+
+  - name: Get swap partition
+    shell: blkid | grep 'PARTLABEL="swap"' | cut -d ':' -f 1
+    register: part_swap_result
+    changed_when: False
+    failed_when: not part_swap_result.stdout
+  - name: Set swap partition fact
+    set_fact:
+      part_swap={{ part_swap_result.stdout }}
+
+  - name: Get root partition
+    shell: blkid | grep 'PARTLABEL="root"' | cut -d ':' -f 1
+    register: part_root_result
+    changed_when: False
+    failed_when: not part_root_result.stdout
+  - name: Set root partition fact
+    set_fact:
+      part_root={{ part_root_result.stdout }}
+
+  - name: Get root UUID
+    shell: blkid | grep root | sed -En 's/.* UUID="([a-z0-9-]+).*"/\1/p'
+    register: part_root_uuid_result
+    changed_when: False
+    failed_when: not part_root_uuid_result.stdout
+  - name: Set root partition UUID fact
+    set_fact:
+      part_root_uuid={{ part_root_uuid_result.stdout }}
+
+  - name: Format EFI to vfat
+    filesystem:
+      dev: "{{ part_efi }}"
+      fstype: vfat
+      force: no
+
+  - name: Format swap
+    filesystem:
+      dev: "{{ part_swap }}"
+      fstype: swap
+      force: no
+
+  - name: Encrypt root disk
+    luks_device:
+      device: "{{ part_root }}"
+      name: ArchCrypt
+      keyfile: /tmp/disk_password
+      state: opened
+  - name: Set unencrypted root partition fact
+    set_fact:
+      part_unenc_root=/dev/mapper/ArchCrypt
+
+  - name: Format root to ext4
+    filesystem:
+      dev: "{{ part_unenc_root }}"
+      fstype: ext4
+      force: no
+
+  - name: Mount root disk
+    mount:
+      state: mounted
+      src: /dev/mapper/ArchCrypt
+      path: /mnt
+      fstype: ext4
+
+  - name: Create /mnt/boot directory (/boot for chroot)
+    file:
+      path: /mnt/boot
+      state: directory
+      mode: '0755'
+
+  - name: Get German mirrorlist
+    shell: curl 'https://www.archlinux.org/mirrorlist/?country=DE&protocol=https&ip_version=4&use_mirror_status=on' | sed -E 's/#//' > /etc/pacman.d/mirrorlist
+    changed_when: True
+    args:
+      warn: no
+
+  - name: Mount EFI partition
+    mount:
+      state: mounted
+      src: "{{ part_efi }}"
+      path: /mnt/boot
+      fstype: vfat
+
+  - name: Install ArchLinux packages to /mnt
+    changed_when: True
+    command:
+      argv:
+      - /usr/bin/pacstrap
+      - /mnt
+      - linux
+      - linux-firmware
+      - base
+      - base-devel
+      - ansible
+      - openssh
+      - vim
+      - networkmanager
+      - docker
+      - intel-ucode
+      - efibootmgr
+
+  - name: Generate and add fstab
+    shell: genfstab -U /mnt > /mnt/etc/fstab
+    changed_when: True
+
+  - name: Prepare Arch environment in chroot
+    tags: ["post-setup"]
+    block:
+      - name: Set the time zone
+        command: arch-chroot /mnt ln -sf /usr/share/zoneinfo/Europe/Berlin /etc/localtime
+
+      - name: Hwclock
+        command: arch-chroot /mnt hwclock --systohc
+
+        # add newline because locale-gen doesn't work without it
+      - name: Specify locale
+        copy: content="en_US.UTF-8 UTF-8\n" dest=/mnt/etc/locale.gen
+        register: locale
+
+      - name: Generate locale
+        command: arch-chroot /mnt locale-gen
+        when: locale.changed
+
+      - name: Set locale
+        copy: content="LANG=en_US.UTF-8" dest=/mnt/etc/locale.conf
+
+      - name: Set hostname
+        copy: content="{{ hostname }}" dest=/mnt/etc/hostname
+
+      - name: Set /etc/hosts
+        copy: content="127.0.0.1  localhost\n::1  localhost\n127.0.1.1  {{ hostname }}\n" dest=/mnt/etc/hosts
+
+      - name: Add cryptsetup in the mkinitcpio configuration
+        lineinfile:
+            path: /mnt/etc/mkinitcpio.conf
+            state: present
+            regexp: 'modconf block filesystems'
+            line: HOOKS=(base udev autodetect modconf block encrypt filesystems keyboard fsck)
+
+      - name: Enable wheel group to execute any command
+        lineinfile:
+            path: /mnt/etc/sudoers
+            state: present
+            regexp: '# %wheel ALL=(ALL) ALL'
+            line: '%wheel ALL=(ALL) ALL'
+
+      - name: Regenerate initram disk
+        command: arch-chroot /mnt mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img -k $(ls /mnt/lib/modules)
+
+      - name: Install systemd-boot
+        command: arch-chroot /mnt bootctl --esp-path=/boot install
+
+      - name: Copy bootloader files
+        template: src={{ item.src }} dest={{ item.dest }}
+        with_items:
+          - { src: 'systemd-boot/loader.conf', dest: '/mnt/boot/loader/loader.conf'}
+          - { src: 'systemd-boot/entries/arch.conf.j2', dest: '/mnt/boot/loader/entries/arch.conf'}
+          - { src: 'systemd-boot/entries/arch-fallback.conf.j2', dest: '/mnt/boot/loader/entries/arch-fallback.conf'}
+
+      - name: Set root password
+        shell: echo -e "{{ user_password }}\n{{ user_password }}" | arch-chroot /mnt passwd root
+
+      - name: Add user and group
+        command: arch-chroot /mnt useradd -m -G wheel,docker,input {{ username }}
+
+      - name: Set user password
+        shell: echo -e "{{ user_password }}\n{{ user_password }}" | arch-chroot /mnt passwd {{ username }}
