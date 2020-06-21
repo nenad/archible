@@ -1,0 +1,35 @@
+---
+- name: "Basic machine setup"
+  hosts: all
+  gather_facts: no
+  connection: local
+
+  tasks:
+  - name: Enable NetworkManager
+    systemd:
+      no_block: False
+      name: NetworkManager
+      enabled: True
+      state: started
+      scope: system
+
+  - name: Update all packages
+    become: yes
+    pacman:
+      update_cache: yes
+      upgrade: yes
+
+  - name: Install main packages
+    pacman:
+      state: present
+      name:
+        - sway
+        - termite
+        - zsh
+        - firefox
+
+  - name: Copy configs
+    copy:
+        dest: ~/.config
+        src: .config
+        force: yes
