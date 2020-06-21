@@ -12,4 +12,4 @@ My ArchLinux setup in Ansible playbooks
 After booting from a live ArchLinux USB and setting up Internet connection, run the following commands:
 
 - `git clone https://github.com/nenad/archible` - clones this repository
-- `sudo sh archible/run.sh` - installs Ansible and runs all the playbooks
+- `sudo sh archible/setup.sh` - installs Ansible and runs all the playbooks
