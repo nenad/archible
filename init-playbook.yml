@@ -64,6 +64,7 @@
   - name: Generate locale
     command: locale-gen
     when: locale.changed
+    changed_when: True
 
   - name: Set locale
     copy: content="LANG=en_US.UTF-8" dest=/etc/locale.conf
@@ -209,6 +210,8 @@
       - docker
       - intel-ucode
       - efibootmgr
+      - netctl
+      - dialog
 
   - name: Generate and add fstab
     shell: genfstab -U /mnt > /mnt/etc/fstab
