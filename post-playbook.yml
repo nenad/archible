@@ -21,6 +21,7 @@
       upgrade: yes
 
   - name: Install main packages
+    tags: ["apps"]
     become: yes
     pacman:
       state: present
@@ -32,6 +33,9 @@
         - code
         - xorg-server-xwayland
         - gopass
+        - bemenu
+        - strace
+        - bemenu-wlroots
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
