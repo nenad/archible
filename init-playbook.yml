@@ -95,7 +95,7 @@
   - name: Setup root partition
     parted:
       device: "{{ disk_id }}"
-      label: gpt/
+      label: gpt
       part_start: 17GiB
       part_end: 100%
       name: root
@@ -130,12 +130,12 @@
     set_fact:
       part_root={{ part_root_result.stdout }}
 
-  - name: Get root UUID
-    shell: blkid | grep root | sed -En 's/.* UUID="([a-z0-9-]+).*"/\1/p'
+  - name: Get root PARTUUID
+    shell: blkid | grep root | sed -En 's/.* PARTUUID="([a-z0-9-]+).*"/\1/p'
     register: part_root_uuid_result
     changed_when: False
     failed_when: not part_root_uuid_result.stdout
-  - name: Set root partition UUID fact
+  - name: Set root partition PARTUUID fact
     set_fact:
       part_root_uuid={{ part_root_uuid_result.stdout }}
 
@@ -212,6 +212,9 @@
       - efibootmgr
       - netctl
       - dialog
+      - git
+      - unzip
+      - man
 
   - name: Generate and add fstab
     shell: genfstab -U /mnt > /mnt/etc/fstab
@@ -239,7 +242,7 @@
         copy: content="LANG=en_US.UTF-8" dest=/mnt/etc/locale.conf
 
       - name: Set hostname
-        copy: content="{{ hostname }}" dest=/mnt/etc/hostname
+        copy: content={{ hostname }} dest=/mnt/etc/hostname
 
       - name: Set /etc/hosts
         copy: content="127.0.0.1  localhost\n::1  localhost\n127.0.1.1  {{ hostname }}\n" dest=/mnt/etc/hosts
@@ -259,7 +262,7 @@
             line: '%wheel ALL=(ALL) ALL'
 
       - name: Regenerate initram disk
-        command: arch-chroot /mnt mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img -k $(ls /mnt/lib/modules)
+        shell: arch-chroot /mnt mkinitcpio -c /etc/mkinitcpio.conf -g /boot/initramfs-linux.img -k $(ls /mnt/lib/modules)
 
       - name: Install systemd-boot
         command: arch-chroot /mnt bootctl --esp-path=/boot install
@@ -279,3 +282,4 @@
 
       - name: Set user password
         shell: echo -e "{{ user_password }}\n{{ user_password }}" | arch-chroot /mnt passwd {{ username }}
+
