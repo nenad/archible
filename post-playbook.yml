@@ -1,11 +1,12 @@
 ---
 - name: "Basic machine setup"
-  hosts: all
+  hosts: localhost
   gather_facts: no
   connection: local
 
   tasks:
   - name: Enable NetworkManager
+    become: yes
     systemd:
       no_block: False
       name: NetworkManager
@@ -20,6 +21,7 @@
       upgrade: yes
 
   - name: Install main packages
+    become: yes
     pacman:
       state: present
       name:
@@ -27,9 +29,31 @@
         - termite
         - zsh
         - firefox
+        - code
+        - xorg-server-xwayland
+        - gopass
 
-  - name: Copy configs
-    copy:
-        dest: ~/.config
-        src: .config
-        force: yes
+  - name: Link .config dotfiles
+    tags: ["dotfiles"]
+    file:
+      src: "{{ item.root }}{{ item.path }}"
+      dest: "~/.config/{{ item.path }}"
+      state: link
+      force: yes
+    with_filetree:
+      - config/
+    when:
+      # Only list root-level directories
+      - "'/' not in item.path"
+      - item.state == "directory"
+
+  - name: Create home config directories and symlink all files
+    tags: ["dotfiles"]
+    file:
+      access_time: preserve
+      modification_time: preserve
+      dest: "~/{{ item.path }}"
+      state: '{{ (item.state == "file") | ternary("link", "directory") }}'
+      force: yes
+    with_filetree:
+      - home/
