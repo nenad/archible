@@ -36,6 +36,7 @@
         - bemenu
         - strace
         - bemenu-wlroots
+        - fwupd
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
@@ -56,6 +57,7 @@
     file:
       access_time: preserve
       modification_time: preserve
+      src: '{{ (item.state == "file") | ternary(item.root+item.path, "") }}'
       dest: "~/{{ item.path }}"
       state: '{{ (item.state == "file") | ternary("link", "directory") }}'
       force: yes
