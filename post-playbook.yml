@@ -59,6 +59,8 @@
       state: present
       name:
         # Community
+        - pavucontrol
+        - pulseaudio
         - termite
         - htop
         - zsh
@@ -84,6 +86,8 @@
         - dbeaver
         - wl-clipboard
         - pacman-contrib
+        - vlc
+        - tldr
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
