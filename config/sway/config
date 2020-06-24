@@ -447,8 +447,9 @@ exec --no-startup-id sleep 10 && exec aw-qt
 bindsym            $mod+Return exec --no-startup-id env GDK_BACKEND=x11 XDG_SESSION_TYPE=x11 termite
 #bindsym  $mod+Return exec --no-startup-id alacritty
 bindcode Ctrl+Shift+$w exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard"
-bindcode $mod+$d exec --no-startup-id j4-dmenu-desktop --dmenu='bemenu -i -l 5 --fn Terminus 16' --term='termite'
-bindcode $mod+$p exec --no-startup-id gopass list --flat | bemenu -i -l 5 --fn Terminus 16 | xargs gopass show --password | wl-copy
+bindcode $mod+$d exec --no-startup-id j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='termite'
+bindcode $mod+$p exec --no-startup-id gopass list --flat | bemenu -p Password -i -l 5 --fn Terminus 16 | xargs gopass show --password | wl-copy
+bindcode $mod+Shift+$p exec --no-startup-id gopass list --flat | bemenu -p OTP -i -l 5 --fn Terminus 16 | xargs gopass otp --password | wl-copy
 bindcode Ctrl+$escape exec "swaylock -c 000000 -f -i ~/Pictures/batman.jpg"
 bindcode Ctrl+$space exec "makoctl dismiss --all"
 
