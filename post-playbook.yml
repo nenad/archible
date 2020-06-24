@@ -1,10 +1,37 @@
+# TODO Copy /etc files
+# - pacman.conf
+# - makepkg.conf
 ---
 - name: "Basic machine setup"
   hosts: localhost
   gather_facts: no
   connection: local
 
+  roles:
+  - kewlfft.aur
+
   tasks:
+  - name: "Configure user: nenad"
+    tags: ["user"]
+    become: yes
+    user:
+      name: nenad
+      create_home: yes
+      group: users
+      groups: ["docker", "input", "wheel", "video"]
+      shell: /usr/bin/zsh
+
+  tasks:
+  - name: "Configure user: nenad-home"
+    tags: ["user"]
+    become: yes
+    user:
+      name: nenad-home
+      create_home: yes
+      group: users
+      groups: ["docker", "input", "wheel", "video"]
+      shell: /usr/bin/zsh
+
   - name: Enable NetworkManager
     become: yes
     systemd:
@@ -14,29 +41,65 @@
       state: started
       scope: system
 
+  # Has to be done before we install any other package
+  - name: Install yay
+    tags: ["system"]
+    aur:
+      state: present
+      name:
+        - yay
+
   - name: Update all packages
     become: yes
-    pacman:
+    aur:
       update_cache: yes
       upgrade: yes
 
   - name: Install main packages
     tags: ["apps"]
-    become: yes
-    pacman:
+    aur:
       state: present
       name:
-        - sway
+        # Community
         - termite
+        - htop
         - zsh
         - firefox
         - code
-        - xorg-server-xwayland
+          #- xorg-server-xwayland
+        - xorg-server-xwayland-git # Until xorg-server-xwayland updates their version
         - gopass
         - bemenu
         - strace
         - bemenu-wlroots
         - fwupd
+        - thunderbird
+        - alsa-utils
+        - light
+        - waybar
+        - terminus-font-otb
+        - otf-font-awesome
+        - bc
+        - mako
+        - playerctl
+        - swaylock
+        - swayidle
+        - dbeaver
+        - wl-clipboard
+        - pacman-contrib
+        # AUR
+        - sway-git # Migrate to sway once there is a new stable version
+        - terminus-font-ttf
+        - goland
+        - goland-jre
+        - phpstorm
+        - phpstorm-jre
+        - yay
+        - zsh-theme-powerlevel10k-git
+        - j4-dmenu-desktop
+        - slack-desktop
+        - activitywatch-bin
+        - ydotool
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
@@ -63,14 +126,3 @@
       force: yes
     with_filetree:
       - home/
-
-  - name: Install yay
-    tags: ["system"]
-    become: yes
-    unarchive:
-      src: https://github.com/Jguer/yay/releases/download/v10.0.1/yay_10.0.1_x86_64.tar.gz
-      dest: /usr/local/bin
-      remote_src: yes
-      extra_opts:
-        - --strip
-        - "1"
