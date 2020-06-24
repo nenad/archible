@@ -6,6 +6,7 @@ PS1='[\u@\h \W]\$ '
 
 alias apps="ansible-playbook -K ~/archible/post-playbook.yml --tags apps"
 alias dots="ansible-playbook ~/archible/post-playbook.yml --tags dotfiles"
+alias edots="vim ~/archible/post-playbook.yml"
 
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
