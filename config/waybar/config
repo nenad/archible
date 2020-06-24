@@ -33,7 +33,7 @@
         }
     },
     "custom/ping": {
-	"exec": "/home/nenad/.config/waybar/ping.sh",
+	"exec": "$HOME/.config/waybar/ping.sh",
 	"interval": 1,
 	"tooltip": false
     },
