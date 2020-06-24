@@ -88,6 +88,9 @@
         - pacman-contrib
         - vlc
         - tldr
+        - nomacs
+        - libva-intel-driver
+        - libva-mesa-driver
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf

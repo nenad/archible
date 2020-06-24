@@ -22,6 +22,7 @@ export EDITOR='vim'
 alias apps="ansible-playbook ~/archible/post-playbook.yml --tags apps"
 alias dots="ansible-playbook ~/archible/post-playbook.yml --tags dotfiles"
 alias edots="vim ~/archible/post-playbook.yml"
+alias a="cd ~/archible"
 
 # Git aliases
 alias gdd="git diff --cached"
