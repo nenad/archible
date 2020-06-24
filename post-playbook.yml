@@ -21,7 +21,6 @@
       groups: ["docker", "input", "wheel", "video"]
       shell: /usr/bin/zsh
 
-  tasks:
   - name: "Configure user: nenad-home"
     tags: ["user"]
     become: yes
@@ -50,9 +49,8 @@
         - yay
 
   - name: Update all packages
-    become: yes
+    tags: ["update"]
     aur:
-      update_cache: yes
       upgrade: yes
 
   - name: Install main packages
@@ -66,7 +64,6 @@
         - zsh
         - firefox
         - code
-          #- xorg-server-xwayland
         - xorg-server-xwayland-git # Until xorg-server-xwayland updates their version
         - gopass
         - bemenu
@@ -100,6 +97,8 @@
         - slack-desktop
         - activitywatch-bin
         - ydotool
+        - oh-my-zsh-git
+        - pinentry-wayland
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
