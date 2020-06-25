@@ -35,4 +35,5 @@ fi
 if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
     export PINENTRY_USER_DATA=USE_TTY=1
 fi
+export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye >/dev/null
