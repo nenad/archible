@@ -28,7 +28,6 @@ alias a="cd ~/archible"
 alias gdd="git diff --cached"
 
 # Setup gpg-agent
-gpg-connect-agent updatestartuptty /bye >/dev/null
 if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
 fi
@@ -36,3 +35,4 @@ fi
 if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
     export PINENTRY_USER_DATA=USE_TTY=1
 fi
+gpg-connect-agent updatestartuptty /bye >/dev/null
