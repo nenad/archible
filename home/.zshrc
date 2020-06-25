@@ -27,14 +27,3 @@ alias aa="ansible-playbook ~/archible/post-playbook.yml --tags"
 
 # Git aliases
 alias gdd="git diff --cached"
-
-# Setup gpg-agent
-if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-fi
-# Use either tty shell or GUI
-if [[ ! -z "${WAYLAND_DISPLAY}" ]]; then
-    export PINENTRY_USER_DATA=USE_TTY=1
-fi
-export GPG_TTY=$(tty)
-gpg-connect-agent updatestartuptty /bye >/dev/null
