@@ -92,6 +92,7 @@
         - libva-intel-driver
         - libva-mesa-driver
         - kubectl
+        - libnotify
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
@@ -107,6 +108,8 @@
         - ydotool
         - oh-my-zsh-git
         - pinentry-wayland
+        - firefox-nightly
+        - wdisplays
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
