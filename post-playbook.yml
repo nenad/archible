@@ -54,15 +54,25 @@
   - name: Enable clipmenu
     tags: ["systemd", "systemd-user"]
     systemd:
+      enabled: True
       name: clipmenud
-      state: restarted
+      state: started
+      scope: user
+
+  - name: Enable pulseaudio
+    tags: ["systemd", "systemd-user"]
+    systemd:
+      enabled: True
+      name: pulseaudio
+      state: started
       scope: user
 
   - name: Enable redshift
     tags: ["systemd", "systemd-user"]
     systemd:
+      enabled: True
       name: redshift
-      state: restarted
+      state: started
       scope: user
 
 
