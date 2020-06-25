@@ -32,6 +32,7 @@
       shell: /usr/bin/zsh
 
   - name: Enable NetworkManager
+    tags: ["systemd"]
     become: yes
     systemd:
       no_block: False
@@ -39,6 +40,31 @@
       enabled: True
       state: started
       scope: system
+
+  - name: Enable docker
+    tags: ["systemd"]
+    become: yes
+    systemd:
+      no_block: False
+      name: docker
+      enabled: True
+      state: started
+      scope: system
+
+  - name: Enable clipmenu
+    tags: ["systemd", "systemd-user"]
+    systemd:
+      name: clipmenud
+      state: restarted
+      scope: user
+
+  - name: Enable redshift
+    tags: ["systemd", "systemd-user"]
+    systemd:
+      name: redshift
+      state: restarted
+      scope: user
+
 
   # Has to be done before we install any other package
   - name: Install yay
@@ -64,11 +90,14 @@
         - termite
         - htop
         - zsh
+        - zip
+        - nnn
         - firefox
         - code
         - xorg-server-xwayland-git # Until xorg-server-xwayland updates their version
         - gopass
         - bemenu
+        - clipmenu
         - strace
         - bemenu-wlroots
         - fwupd
@@ -93,6 +122,7 @@
         - libva-mesa-driver
         - kubectl
         - libnotify
+        - openvpn
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
