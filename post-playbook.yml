@@ -91,6 +91,7 @@
         - nomacs
         - libva-intel-driver
         - libva-mesa-driver
+        - kubectl
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
