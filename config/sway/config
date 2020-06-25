@@ -253,7 +253,7 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-bindcode $mod+$r mode "resize"
+bindsym --to-code $mod+r mode "resize"
 
 # Shutdown module
 set $mode_system [l]      [e]      [s]      [r]      [S] 
@@ -325,7 +325,7 @@ exec sleep 10 && exec aw-qt
 
 # Application
 bindsym           $mod+Return exec env GDK_BACKEND=x11 XDG_SESSION_TYPE=x11 termite
-bindsym --to-code $mod+n exec "env CM_LAUNCHER=bemenu clipmenu"
+bindsym --to-code $mod+n exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
 bindsym --to-code $mod+d exec j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='termite'
 bindsym --to-code $mod+p exec gopass list --flat | bemenu -p Password -i -l 5 --fn Terminus 16 | xargs gopass show --password | wl-copy
 bindsym --to-code $mod+Shift+p exec gopass list --flat | bemenu -p OTP -i -l 5 --fn Terminus 16 | xargs gopass otp --password | wl-copy
