@@ -107,7 +107,6 @@
         - activitywatch-bin
         - ydotool
         - oh-my-zsh-git
-        - pinentry-wayland
         - firefox-nightly
         - wdisplays
 
