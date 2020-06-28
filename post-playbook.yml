@@ -31,6 +31,19 @@
       groups: ["docker", "input", "wheel", "video"]
       shell: /usr/bin/zsh
 
+  - name: Create .config dir
+    tags: ["dotfiles"]
+    file:
+      path: "~/.config"
+      state: directory
+
+  - name: Create .gnupg dir
+    tags: ["dotfiles"]
+    file:
+      path: "~/.gnupg"
+      state: directory
+      mode: 0700
+
   - name: Enable NetworkManager
     tags: ["systemd"]
     become: yes
