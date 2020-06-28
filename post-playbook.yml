@@ -188,3 +188,8 @@
       force: yes
     with_filetree:
       - home/
+
+  - name: Load extra playbook
+    tags: ["always"]
+    include: "{{ extra_playbook }}"
+    when: extra_playbook is defined
