@@ -317,7 +317,6 @@ exec mako
 exec thunderbird
 exec redshift-gtk
 exec slack
-exec sleep 10 && exec aw-qt
 
 #############################################################
 #=====================  Applications  =======================
