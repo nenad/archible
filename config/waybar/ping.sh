@@ -27,5 +27,5 @@ else
 	display="${display:1}X"
 fi
 
-echo "${time}ms ${display}" 
+printf '%5sms %s' ${time} ${display}
 echo "$display" > $tmpfile
