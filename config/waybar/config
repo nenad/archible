@@ -6,7 +6,7 @@
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
     "modules-center": ["sway/window"],
-    "modules-right": ["custom/ping", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery", "clock", "tray"],
+    "modules-right": ["custom/ping", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "custom/temp", "backlight", "battery", "clock", "tray"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": false,
@@ -35,6 +35,11 @@
     "custom/ping": {
 	"exec": "$HOME/.config/waybar/ping.sh",
 	"interval": 1,
+	"tooltip": false
+    },
+    "custom/temp": {
+	"exec": "$HOME/.config/waybar/temp.sh",
+	"interval": 3,
 	"tooltip": false
     },
     "tray": {
