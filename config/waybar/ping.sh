@@ -1,5 +1,5 @@
 #!/bin/sh
-tmpfile=/tmp/waybar-ping
+tmpfile=/tmp/waybar-ping-$UID
 if [ -f $tmpfile ]; then
 	display="$(printf '%15s' $(cat $tmpfile))"
 else
