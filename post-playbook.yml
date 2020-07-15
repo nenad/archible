@@ -18,7 +18,7 @@
       name: nenad
       create_home: yes
       group: users
-      groups: ["docker", "input", "wheel", "video"]
+      groups: ["docker", "input", "wheel", "video", "wireshark"]
       shell: /usr/bin/zsh
 
   - name: "Configure user: nenad-home"
@@ -28,7 +28,7 @@
       name: nenad-home
       create_home: yes
       group: users
-      groups: ["docker", "input", "wheel", "video"]
+      groups: ["docker", "input", "wheel", "video", "wireshark"]
       shell: /usr/bin/zsh
 
   - name: Create .config dir
@@ -149,6 +149,7 @@
         - libnotify
         - openvpn
         - jq
+        - wireshark-qt
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
