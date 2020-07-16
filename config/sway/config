@@ -168,7 +168,7 @@ bindswitch lid:off output $internal enable
 
 # Laptop screen botton of horizontal
 output eDP-1 {
-	pos 316 1440
+	pos 0 360
 	res 1920x1080
 	#background ~/Pictures/batman_small.jpg fit
 	subpixel rgb
@@ -177,47 +177,23 @@ output eDP-1 {
 
 # Right of laptop
 output DP-2 {
-	pos 0 0
+	pos 1920 0
 	res 2560x1440
 	subpixel rgb
 }
 
 # Vertical, right of external horizontal monitor - Paused now
 output DP-1 {
-	pos 0 0
+	pos 1920 0
 	res 2560x1440
-	pos 2236 1080
 	transform 0
-	#background ~/Pictures/batman.jpg fit
-	# subpixel vrgb
-	# HOME
-	#transform 0 
-	#subpixel rgb
 }
 
-#output DP-3 {
-	#pos 1920 0
-	#res 2560x1440
-	#subpixel rgb
-#}
-#output DP-4 {
-	#pos 1920 0
-	#res 2560x1440
-	#subpixel rgb
-#}
-#output DP-5 {
-	#pos 1920 0
-	#res 2560x1440
-	#subpixel rgb
-#}
 output DP-4 {
 	pos 4480 0
 	res 2560x1440
 	transform 90
 	subpixel vrgb
-	# HOME
-	#transform 0 
-	#subpixel rgb
 }
 output DP-5 {
 	pos 4480 0
@@ -325,6 +301,7 @@ exec slack
 # Application
 bindsym           $mod+Return exec env GDK_BACKEND=x11 XDG_SESSION_TYPE=x11 termite
 bindsym --to-code $mod+n exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
+bindsym --to-code Ctrl+Shift+w exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
 bindsym --to-code $mod+d exec j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='termite'
 bindsym --to-code $mod+p exec gopass list --flat | bemenu -p Password -i -l 5 --fn Terminus 16 | xargs gopass show --password | wl-copy
 bindsym --to-code $mod+Shift+p exec gopass list --flat | bemenu -p OTP -i -l 5 --fn Terminus 16 | xargs gopass otp --password | wl-copy
