@@ -64,6 +64,16 @@
       state: started
       scope: system
 
+  - name: Enable acpid
+    tags: ["systemd"]
+    become: yes
+    systemd:
+      no_block: False
+      name: acpid
+      enabled: True
+      state: started
+      scope: system
+
   - name: Enable clipmenu
     tags: ["systemd", "systemd-user"]
     systemd:
@@ -116,6 +126,8 @@
         - zip
         - nnn
         - firefox
+        - docker
+        - docker-compose
         - code
         - xorg-server-xwayland-git # Until xorg-server-xwayland updates their version
         - gopass
@@ -150,6 +162,7 @@
         - openvpn
         - jq
         - wireshark-qt
+        - acpid
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
@@ -165,6 +178,8 @@
         - oh-my-zsh-git
         - firefox-nightly
         - wdisplays
+        - nm-connection-editor
+        - powertop
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
