@@ -1,6 +1,6 @@
 # oh-my-zsh setup
 export ZSH=/usr/share/oh-my-zsh
-plugins=(git)
+plugins=(git kubectl)
 source $ZSH/oh-my-zsh.sh
 
 # Lines configured by zsh-newuser-install
@@ -17,6 +17,8 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Use vim as default editor
 export EDITOR='vim'
 
+# Add paths
+export PATH=$HOME/Apps:$PATH
 
 # Setup some aliases
 alias apps="ansible-playbook ~/archible/post-playbook.yml --tags apps"
@@ -27,3 +29,7 @@ alias aa="ansible-playbook ~/archible/post-playbook.yml --tags"
 
 # Git aliases
 alias gdd="git diff --cached"
+
+if [ -f $HOME/.workrc ]; then
+	source $HOME/.workrc
+fi
