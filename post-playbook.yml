@@ -212,6 +212,19 @@
     with_filetree:
       - home/
 
+  - name: Create /etc config directories and symlink all files
+    tags: ["system-dotfiles"]
+    become: yes
+    file:
+      access_time: preserve
+      modification_time: preserve
+      src: '{{ (item.state == "file") | ternary(item.root+item.path, "") }}'
+      dest: "/etc/{{ item.path }}"
+      state: '{{ (item.state == "file") | ternary("link", "directory") }}'
+      force: yes
+    with_filetree:
+      - etc/
+
   - name: Load extra playbook
     tags: ["always"]
     include: "{{ extra_playbook }}"
