@@ -163,6 +163,9 @@
         - jq
         - wireshark-qt
         - acpid
+        - gnome-keyring
+        - grim
+        - slurp
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
