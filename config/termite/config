@@ -4,7 +4,7 @@
 #clickable_url = true
 #dynamic_title = true
 #font = SourceCodePro 11
-font = Terminus 14
+font = Terminus 12
 #fullscreen = true
 #geometry = 640x480
 #icon_name = terminal
