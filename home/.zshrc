@@ -18,7 +18,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 export EDITOR='vim'
 
 # Add paths
-export PATH=$HOME/Apps:$PATH
+export PATH=$HOME/Apps:$HOME/.local/bin:$PATH
 
 # Setup some aliases
 alias apps="ansible-playbook ~/archible/post-playbook.yml --tags apps"
