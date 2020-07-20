@@ -169,6 +169,8 @@
         - python-pip
         - nmap
         - bind-tools
+        - nm-connection-editor
+        - powertop
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
@@ -184,8 +186,7 @@
         - oh-my-zsh-git
         - firefox-nightly
         - wdisplays
-        - nm-connection-editor
-        - powertop
+        - wlogout
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
