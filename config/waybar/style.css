@@ -74,6 +74,8 @@ window#waybar.chromium {
 #network,
 #pulseaudio,
 #custom-media,
+#custom-power,
+#custom-temp,
 #tray,
 #mode,
 #idle_inhibitor,

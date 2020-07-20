@@ -170,7 +170,7 @@ bindswitch lid:off output $internal enable
 output eDP-1 {
 	pos 0 360
 	res 1920x1080
-	#background ~/Pictures/batman_small.jpg fit
+	background ~/.config/sway/sergei-akulich--heLWtuAN3c-unsplash.jpg fill
 	subpixel rgb
 	#scale 1.0
 }

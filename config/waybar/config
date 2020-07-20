@@ -5,8 +5,8 @@
     // "width": 1280, // Waybar width
     // Choose the order of the modules
     "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": ["sway/window"],
-    "modules-right": ["custom/ping", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "custom/temp", "backlight", "battery", "clock", "tray"],
+    "modules-center": [],
+    "modules-right": ["custom/ping", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "custom/temp", "backlight", "battery", "clock", "tray", "custom/power"],
     // Modules configuration
     "sway/workspaces": {
         "disable-scroll": false,
@@ -42,6 +42,12 @@
 	"interval": 3,
 	"tooltip": false
     },
+    "custom/power": {
+	"format": "&#xf011;",
+        "on-click": "wlogout",
+	"interval": 0,
+	"tooltip": false
+    },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
@@ -69,7 +75,10 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", ""]
+        "format-icons": ["", ""],
+	"on-scroll-up": "light -A 5",
+	"on-scroll-down": "light -U 5",
+	"smooth-scrolling-threshold": 1
     },
     "battery": {
         "states": {
