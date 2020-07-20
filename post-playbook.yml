@@ -168,6 +168,7 @@
         - slurp
         - python-pip
         - nmap
+        - bind-tools
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
