@@ -288,11 +288,10 @@ for_window [app_id="synapse"] border none; floating enable
 #=======================  Autostart  ========================
 #############################################################
 
-exec nm-applet
 exec mako
 exec thunderbird
-exec redshift-gtk
 exec slack
+exec kanshi
 
 #############################################################
 #=====================  Applications  =======================

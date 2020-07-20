@@ -171,6 +171,7 @@
         - bind-tools
         - nm-connection-editor
         - powertop
+        - kanshi
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
