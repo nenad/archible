@@ -98,6 +98,21 @@
       state: started
       scope: user
 
+  - name: Enable xdg-desktop-portal
+    tags: ["systemd", "systemd-user"]
+    systemd:
+      enabled: True
+      name: xdg-desktop-portal
+      state: started
+      scope: user
+
+  - name: Enable xdg-desktop-portal-wlr (for wayland)
+    tags: ["systemd", "systemd-user"]
+    systemd:
+      enabled: True
+      name: xdg-desktop-portal-wlr
+      state: started
+      scope: user
 
   - name: Enable redshift
     tags: ["systemd", "systemd-user"]
