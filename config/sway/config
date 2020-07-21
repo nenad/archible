@@ -4,8 +4,8 @@
 
 set $mod Mod4 
 set $internal eDP-1
-set $externalHorizontal DP-2
-set $externalVertical DP-1
+set $externalHorizontal 'Acer Technologies KG271U TATEE0048524'
+set $externalVertical 'XAcer Technologies KG271U TATEE0048524'
 
 #############################################################
 #=======================  Navigation  =======================
@@ -86,7 +86,8 @@ bindsym $mod+Shift+0 move container to workspace 10
 # set workspaces to monitors
 workspace 1 output $externalHorizontal
 workspace 2 output $internal
-workspace 3 output $externalVertical
+#workspace 3 output $externalVertical
+workspace 3 output $externalHorizontal
 workspace 4 output $externalHorizontal
 workspace 5 output $internal
 workspace 6 output $internal
@@ -175,31 +176,19 @@ output eDP-1 {
 	#scale 1.0
 }
 
-# Right of laptop
-output DP-2 {
+output $externalHorizontal {
+	pos 1920 0
+	adaptive_sync on
+	res 2560x1440
+	subpixel rgb
+	background ~/.config/sway/luca-bravo-ESkw2ayO2As-unsplash.jpg fill
+}
+
+output $externalVertical {
 	pos 1920 0
 	res 2560x1440
 	subpixel rgb
-}
-
-# Vertical, right of external horizontal monitor - Paused now
-output DP-1 {
-	pos 1920 0
-	res 2560x1440
-	transform 0
-}
-
-output DP-4 {
-	pos 4480 0
-	res 2560x1440
-	transform 90
-	subpixel vrgb
-}
-output DP-5 {
-	pos 4480 0
-	res 2560x1440
-	transform 90
-	subpixel vrgb
+	background ~/.config/sway/luca-bravo-ESkw2ayO2As-unsplash.jpg fill
 }
 
 #############################################################
