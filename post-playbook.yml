@@ -202,6 +202,7 @@
         - pipewire-jack
         - kcachegrind
         - chromium
+        - imagemagick
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
