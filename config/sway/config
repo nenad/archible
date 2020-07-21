@@ -295,6 +295,7 @@ bindsym --to-code $mod+p exec gopass list --flat | bemenu -p Password -i -l 5 --
 bindsym --to-code $mod+Shift+p exec gopass list --flat | bemenu -p OTP -i -l 5 --fn Terminus 16 | xargs gopass otp --password | wl-copy
 bindsym --to-code Ctrl+escape exec "swaylock -c 000000 -f -i ~/Pictures/batman.jpg"
 bindsym --to-code Ctrl+space exec "makoctl dismiss --all"
+bindsym --to-code $mod+x exec "wlogout"
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master 5%+"
