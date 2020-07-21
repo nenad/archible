@@ -2,7 +2,7 @@
 	background-image: none;
 }
 window {
-	    background-image: image(url("aaron-alvarado-OZSNnAU5RPk-unsplash.jpg"), url("aaron-alvarado-OZSNnAU5RPk-unsplash.jpg"));
+	    background-image: url("aaron-alvarado-OZSNnAU5RPk-unsplash-small.jpg");
 	    background-size: 100% 100%;
 }
 button {
