@@ -90,6 +90,15 @@
       state: started
       scope: user
 
+  - name: Enable pipewire
+    tags: ["systemd", "systemd-user"]
+    systemd:
+      enabled: True
+      name: pipewire
+      state: started
+      scope: user
+
+
   - name: Enable redshift
     tags: ["systemd", "systemd-user"]
     systemd:
@@ -172,6 +181,12 @@
         - nm-connection-editor
         - powertop
         - kanshi
+        - pipewire
+        - libpipewire02
+        - pipewire-pulse
+        - pipewire-jack
+        - kcachegrind
+        - chromium
         # AUR
         - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
@@ -188,6 +203,7 @@
         - firefox-nightly
         - wdisplays
         - wlogout
+        - xdg-desktop-portal-wlr
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
