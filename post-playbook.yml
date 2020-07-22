@@ -142,6 +142,7 @@
       state: present
       name:
         # Community
+        - sway
         - pavucontrol
         - pulseaudio
         - termite
@@ -204,7 +205,6 @@
         - chromium
         - imagemagick
         # AUR
-        - sway-git # Migrate to sway once there is a new stable version
         - terminus-font-ttf
         - goland
         - goland-jre
