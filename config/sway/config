@@ -259,6 +259,7 @@ for_window [class="^jetbrains-.+"][window_type=dialog] focus
 for_window [class="java-lang-Thread"] floating enable
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 for_window [title="win0"] floating enable
+for_window [title="Firefox - Sharing Indicator"] floating enable
 
 # Apps
 #for_window [class="[cC]hromium"] border pixel 3
@@ -287,7 +288,7 @@ exec kanshi
 #############################################################
 
 # Application
-bindsym           $mod+Return exec env GDK_BACKEND=x11 XDG_SESSION_TYPE=x11 termite
+bindsym           $mod+Return exec env GDK_BACKEND=x11 termite
 bindsym --to-code $mod+n exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
 bindsym --to-code Ctrl+Shift+w exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
 bindsym --to-code $mod+d exec j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='termite'
