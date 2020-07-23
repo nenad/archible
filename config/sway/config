@@ -278,6 +278,7 @@ for_window [app_id="synapse"] border none; floating enable
 #=======================  Autostart  ========================
 #############################################################
 
+exec systemctl --user set-environment DISPLAY=$DISPLAY
 exec mako
 exec thunderbird
 exec slack
