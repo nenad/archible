@@ -1,1 +1,2 @@
 /config/systemd/user/*
+!/config/systemd/user/*.service
