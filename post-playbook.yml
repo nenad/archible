@@ -204,6 +204,7 @@
         - kcachegrind
         - chromium
         - imagemagick
+        - graphviz
         # AUR
         - terminus-font-ttf
         - goland
