@@ -169,6 +169,7 @@
         - otf-font-awesome
         - ttf-roboto
         - ttf-roboto-mono
+        - noto-fonts-emoji
         - bc
         - mako
         - playerctl
@@ -205,6 +206,8 @@
         - chromium
         - imagemagick
         - graphviz
+        - python-libevdev
+        - python-pyudev
         # AUR
         - terminus-font-ttf
         - goland
