@@ -1,0 +1,14 @@
+font=Terminus 10
+background-color=#323232
+text-color=#ddddddff
+border-size=3
+border-color=#0fbed8ff
+border-radius=3
+group-by=app-name
+
+[app-name=Slack]
+background-color=#ffffff
+text-color=#000000
+
+[app-name=Thunderbird]
+background-color=#ff00ff
