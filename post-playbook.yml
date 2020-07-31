@@ -208,6 +208,7 @@
         - graphviz
         - python-libevdev
         - python-pyudev
+        - libreoffice-fresh
         # AUR
         - terminus-font-ttf
         - goland
