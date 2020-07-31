@@ -3,6 +3,6 @@ profile laptop-only {
 }
 
 profile dual-monitor-home-setup {
-	output eDP-1 enable position 0,360
-	output "Acer Technologies KG271U TATEE0048524" position 1920,0
+	output eDP-1 enable position 320,1440
+	output "Acer Technologies KG271U TATEE0048524" position 0,0
 }
