@@ -4,7 +4,7 @@
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Roboto Mono, Helvetica, Arial, sans-serif;
     font-size: 12px;
-    min-height: 0;
+    min-height: 16px;
 }
 
 window#waybar {
@@ -38,7 +38,7 @@ window#waybar.chromium {
 }
 
 #workspaces button {
-    padding: 0 5px;
+    padding: 0 25px;
     background-color: transparent;
     color: #ffffff;
     border-bottom: 3px solid transparent;
@@ -76,6 +76,8 @@ window#waybar.chromium {
 #custom-media,
 #custom-power,
 #custom-temp,
+#custom-bandwidth,
+#custom-ping,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -120,14 +122,16 @@ label:focus {
     background-color: #000000;
 }
 
+#custom-bandwidth {
+    background-color: #739AAF;
+}
+
 #custom-ping {
     background-color: #FF7161;
-    padding: 0 3px;
 }
 
 #custom-temp {
     background-color: #FF7161;
-    padding: 0 4px;
 }
 
 #cpu {
