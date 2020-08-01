@@ -12,8 +12,8 @@
         "disable-scroll": false,
         "all-outputs": false,
         "format": "{name}",
-	"smooth-scrolling-threshold": 33,
-	"enable-bar-scroll": true,
+	"smooth-scrolling-threshold": 1,
+	"enable-bar-scroll": false,
 	"disable-scroll-wraparound": true
     },
     "sway/mode": {
