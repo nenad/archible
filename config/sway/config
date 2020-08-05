@@ -259,6 +259,7 @@ for_window [window_role="app" title="Authy"] floating enable
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="synapse"] border none; floating enable
 for_window [app_id="nm-connection-editor"] floating enable
+for_window [class="DBeaver" instance="DBeaver" title="^Connection .*"] floating enable
 
 #############################################################
 #=======================  Autostart  ========================
