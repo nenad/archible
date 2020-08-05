@@ -209,6 +209,7 @@
         - python-libevdev
         - python-pyudev
         - libreoffice-fresh
+        - blueberry
         # AUR
         - terminus-font-ttf
         - goland
