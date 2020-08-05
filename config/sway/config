@@ -166,28 +166,17 @@ bindswitch lid:off output $internal enable
 #############################################################
 #========================  Outputs  =========================
 #############################################################
+# -----  Output positioning is handled by kanshi
 
-# Laptop screen botton of horizontal
 output eDP-1 {
-	pos 0 360
-	res 1920x1080
 	background ~/.config/sway/sergei-akulich--heLWtuAN3c-unsplash.jpg fill
-	subpixel rgb
-	#scale 1.0
 }
 
 output $externalHorizontal {
-	pos 1920 0
-	adaptive_sync on
-	res 2560x1440
-	subpixel rgb
 	background ~/.config/sway/luca-bravo-ESkw2ayO2As-unsplash.jpg fill
 }
 
 output $externalVertical {
-	pos 1920 0
-	res 2560x1440
-	subpixel rgb
 	background ~/.config/sway/luca-bravo-ESkw2ayO2As-unsplash.jpg fill
 }
 
