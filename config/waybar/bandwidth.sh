@@ -33,7 +33,7 @@ then
 fi
 
 # path to store the old results in
-path="/dev/shm/$(basename $0)-${INTERFACE}"
+path="/dev/shm/$(basename $0)-${INTERFACE}-${UID}"
 
 # grabbing data for each adapter.
 read rx < "/sys/class/net/${INTERFACE}/statistics/rx_bytes"
