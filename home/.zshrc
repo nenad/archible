@@ -27,8 +27,14 @@ alias edots="vim ~/archible/post-playbook.yml"
 alias a="cd ~/archible"
 alias aa="ansible-playbook ~/archible/post-playbook.yml --tags"
 
+# Setup docker aliases
+alias dpsf='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dex='docker exec -it'
+
 # Git aliases
 alias gdd="git diff --cached"
+alias grrr="git rebase --interactive origin/master"
+alias gdrd="git stash && git checkout master && git pull && git checkout - && git rebase origin/master && git stash pop"
 
 if [ -f $HOME/.workrc ]; then
 	source $HOME/.workrc
