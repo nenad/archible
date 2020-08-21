@@ -5,7 +5,8 @@ Description=Clipmenu daemon
 ExecStart=/usr/bin/clipmenud
 Restart=always
 RestartSec=10s
-After=display-manager.service
+PartOf=graphical-session.target
+After=graphical-session.target
 
 MemoryDenyWriteExecute=yes
 NoNewPrivileges=yes
@@ -15,4 +16,4 @@ RestrictAddressFamilies=
 RestrictRealtime=yes
 
 [Install]
-WantedBy=default.target
+WantedBy=graphical-session.target

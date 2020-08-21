@@ -266,7 +266,6 @@ for_window [class="DBeaver" instance="DBeaver" title="^Connection .*"] floating 
 #############################################################
 
 exec systemctl --user set-environment DISPLAY=$DISPLAY
-exec mako
 exec thunderbird
 exec slack
 exec kanshi
@@ -276,7 +275,7 @@ exec kanshi
 #############################################################
 
 # Application
-bindsym           $mod+Return exec env GDK_BACKEND=x11 termite
+bindsym           $mod+Return exec termite
 bindsym --to-code $mod+n exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
 bindsym --to-code Ctrl+Shift+w exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
 bindsym --to-code $mod+d exec j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='termite'
