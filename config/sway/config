@@ -260,6 +260,7 @@ for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="synapse"] border none; floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [class="DBeaver" instance="DBeaver" title="^Connection .*"] floating enable
+for_window [class="DBeaver" instance="DBeaver" title="^Data Transfer.*"] floating enable
 
 #############################################################
 #=======================  Autostart  ========================
@@ -281,7 +282,7 @@ bindsym --to-code Ctrl+Shift+w exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipbo
 bindsym --to-code $mod+d exec j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='termite'
 bindsym --to-code $mod+p exec gopass list --flat | bemenu -p Password -i -l 5 --fn Terminus 16 | xargs gopass show --password | wl-copy
 bindsym --to-code $mod+Shift+p exec gopass list --flat | bemenu -p OTP -i -l 5 --fn Terminus 16 | xargs gopass otp --password | wl-copy
-bindsym --to-code Ctrl+escape exec "swaylock -c 000000 -f -i ~/Pictures/batman.jpg"
+bindsym --to-code Ctrl+escape exec "swaylock -c 000000 -f"
 bindsym --to-code Ctrl+space exec "makoctl dismiss --all"
 bindsym --to-code $mod+x exec "wlogout"
 
