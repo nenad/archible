@@ -150,7 +150,7 @@
         - zsh
         - zip
         - nnn
-        - firefox
+          #- firefox
         - docker
         - docker-compose
         - code
@@ -201,6 +201,7 @@
         - pipewire
         - libpipewire02
         - pipewire-pulse
+        - jack2
         - pipewire-jack
         - kcachegrind
         - chromium
@@ -210,6 +211,12 @@
         - python-pyudev
         - libreoffice-fresh
         - blueberry
+        - xorg-xeyes
+        - vulkan-headers
+        - libportal
+        - udisks2
+        - udiskie
+        - ntfs-3g
         # AUR
         - terminus-font-ttf
         - goland
@@ -226,6 +233,10 @@
         - wdisplays
         - wlogout
         - xdg-desktop-portal-wlr
+        - fedora-firefox-wayland-bin
+        - swappy
+        - ferdi-bin
+        - turtl
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
