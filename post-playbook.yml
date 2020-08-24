@@ -217,6 +217,7 @@
         - udisks2
         - udiskie
         - ntfs-3g
+        - gdb
         # AUR
         - terminus-font-ttf
         - goland
