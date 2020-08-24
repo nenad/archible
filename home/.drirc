@@ -1,0 +1,7 @@
+<driconf>
+  <device screen="0" driver="i965">
+    <application name="chromium" executable="chromium">
+      <option name="bo_reuse" value="0" />
+    </application>
+  </device>
+</driconf>
