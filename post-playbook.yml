@@ -54,6 +54,16 @@
       state: started
       scope: system
 
+  - name: Enable CUPS
+    tags: ["systemd"]
+    become: yes
+    systemd:
+      no_block: False
+      name: cups-browsed
+      enabled: True
+      state: started
+      scope: system
+
   - name: Enable docker
     tags: ["systemd"]
     become: yes
