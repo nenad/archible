@@ -218,6 +218,14 @@
         - udiskie
         - ntfs-3g
         - gdb
+        - intellij-idea-community-edition
+        - cups
+        - mpv
+        - inetutils
+        - bluez-utils
+        - ethtool
+        - network-manager-applet
+        - shellcheck
         # AUR
         - terminus-font-ttf
         - goland
@@ -238,6 +246,7 @@
         - swappy
         - ferdi-bin
         - turtl
+        - wlroots-git
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
