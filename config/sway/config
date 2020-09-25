@@ -156,6 +156,7 @@ font Terminus 8
 #############################################################
 
 for_window [class=".*"] border pixel 1
+for_window [app_id="[cC]hromium"] border none
 gaps inner 0
 smart_gaps on
 smart_borders on
@@ -249,6 +250,7 @@ for_window [class="java-lang-Thread"] floating enable
 for_window [instance="sun-awt-X11-XWindowPeer"] border pixel 0
 for_window [title="win0"] floating enable
 for_window [title="Firefox - Sharing Indicator"] floating enable
+for_window [app_id="chromium" title="(Save|Open) File"] floating enable
 
 # Apps
 for_window [class="[pP]inentry"] fullscreen; fullscreen; focus floating
@@ -261,6 +263,7 @@ for_window [app_id="synapse"] border none; floating enable
 for_window [app_id="nm-connection-editor"] floating enable
 for_window [class="DBeaver" instance="DBeaver" title="^Connection .*"] floating enable
 for_window [class="DBeaver" instance="DBeaver" title="^Data Transfer.*"] floating enable
+for_window [app_id="^$" instance="^$" title="^$"] floating enable
 
 #############################################################
 #=======================  Autostart  ========================
@@ -270,6 +273,7 @@ exec systemctl --user set-environment DISPLAY=$DISPLAY
 exec thunderbird
 exec slack
 exec kanshi
+exec nm-applet --indicator
 
 #############################################################
 #=====================  Applications  =======================
