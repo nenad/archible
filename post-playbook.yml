@@ -155,7 +155,8 @@
         - sway
         - pavucontrol
         - pulseaudio
-        - termite
+        - alacritty
+        - termite # maybe to be deleted
         - htop
         - zsh
         - zip
