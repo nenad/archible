@@ -165,7 +165,7 @@
         - docker
         - docker-compose
         - code
-        - xorg-server-xwayland-git # Until xorg-server-xwayland updates their version
+        - xorg-server-xwayland
         - gopass
         - bemenu
         - clipmenu
@@ -237,6 +237,8 @@
         - ethtool
         - network-manager-applet
         - shellcheck
+        - krita
+        - gradle
         # AUR
         - terminus-font-ttf
         - goland
@@ -256,7 +258,7 @@
         - swappy
         - ferdi-bin
         - turtl
-        - wlroots-git
+        - wlroots
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
