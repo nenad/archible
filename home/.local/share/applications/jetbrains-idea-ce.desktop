@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=IntelliJ IDEA Community Edition (wayland)
+Icon=/usr/share/idea/bin/idea.svg
+Exec=env _JAVA_AWT_WM_NONREPARENTING=1 "/usr/share/idea/bin/idea.sh" %f
+Comment=Capable and Ergonomic IDE for JVM
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-idea-ce
