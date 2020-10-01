@@ -155,8 +155,9 @@ font Terminus 8
 #==========================  Gaps  ==========================
 #############################################################
 
-for_window [class=".*"] border pixel 1
 for_window [app_id="[cC]hromium"] border none
+for_window [app_id="[fF]irefox"] border none
+for_window [class=".*"] border pixel 1
 gaps inner 0
 smart_gaps on
 smart_borders on
