@@ -169,6 +169,10 @@ bindswitch lid:off output $internal enable
 #############################################################
 # -----  Output positioning is handled by kanshi
 
+output LVDS-1 {
+	background ~/.config/sway/sergei-akulich--heLWtuAN3c-unsplash.jpg fill
+}
+
 output eDP-1 {
 	background ~/.config/sway/sergei-akulich--heLWtuAN3c-unsplash.jpg fill
 }
