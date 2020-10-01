@@ -275,7 +275,6 @@ for_window [app_id="^$" instance="^$" title="^$"] floating enable
 
 exec systemctl --user set-environment DISPLAY=$DISPLAY
 exec thunderbird
-exec slack
 exec kanshi
 exec nm-applet --indicator
 
