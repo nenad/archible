@@ -1,8 +1,3 @@
-# oh-my-zsh setup
-export ZSH=/usr/share/oh-my-zsh
-plugins=(git kubectl)
-source $ZSH/oh-my-zsh.sh
-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -32,6 +27,8 @@ alias dpsf='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Status}}\t{{.Ports
 alias dex='docker exec -it'
 
 # Git aliases
+alias gst="git status"
+alias gd="git diff"
 alias gdd="git diff --cached"
 alias grrr="git rebase --interactive origin/master"
 alias gdrd="git stash && git checkout master && git pull && git checkout - && git rebase origin/master && git stash pop"
