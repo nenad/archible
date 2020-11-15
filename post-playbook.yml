@@ -239,8 +239,6 @@
         - shellcheck
         - krita
         - gradle
-        - wlroots
-        - youtube-dl
         # AUR
         - terminus-font-ttf
         - goland
@@ -251,6 +249,7 @@
         - zsh-theme-powerlevel10k-git
         - j4-dmenu-desktop
         - ydotool
+        - oh-my-zsh-git
         - firefox-nightly
         - wdisplays
         - wlogout
@@ -259,6 +258,7 @@
         - swappy
         - ferdi-bin
         - turtl
+        - wlroots
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
