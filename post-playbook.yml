@@ -238,6 +238,8 @@
         - network-manager-applet
         - krita
         - gradle
+        - wlroots
+        - gammastep
         # AUR
         - terminus-font-ttf
         - goland
@@ -255,9 +257,7 @@
         - xdg-desktop-portal-wlr
         - fedora-firefox-wayland-bin
         - swappy
-        - ferdi-bin
-        - turtl
-        - wlroots
+        - joplin
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
