@@ -1,6 +1,6 @@
 # oh-my-zsh setup
 export ZSH=/usr/share/oh-my-zsh
-plugins=(git kubectl)
+plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # Lines configured by zsh-newuser-install
