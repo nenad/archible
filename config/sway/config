@@ -278,6 +278,7 @@ exec systemctl --user set-environment DISPLAY=$DISPLAY
 exec thunderbird
 exec kanshi
 exec nm-applet --indicator
+exec gammastep-indicator
 
 #############################################################
 #=====================  Applications  =======================
