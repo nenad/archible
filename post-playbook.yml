@@ -236,7 +236,6 @@
         - bluez-utils
         - ethtool
         - network-manager-applet
-        - shellcheck
         - krita
         - gradle
         # AUR
