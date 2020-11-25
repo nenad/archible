@@ -124,15 +124,6 @@
       state: started
       scope: user
 
-  - name: Enable redshift
-    tags: ["systemd", "systemd-user"]
-    systemd:
-      enabled: True
-      name: redshift
-      state: started
-      scope: user
-
-
   # Has to be done before we install any other package
   - name: Install yay
     tags: ["system"]
