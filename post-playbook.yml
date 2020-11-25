@@ -231,6 +231,8 @@
         - gradle
         - wlroots
         - gammastep
+        - linux-headers
+        - anki
         # AUR
         - terminus-font-ttf
         - goland
@@ -249,6 +251,8 @@
         - fedora-firefox-wayland-bin
         - swappy
         - joplin
+        - v4l2loopback-dkms
+        - obs-v4l2sink
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
