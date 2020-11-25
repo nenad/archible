@@ -53,7 +53,7 @@ bindsym --to-code $mod+s focus child
 # scratchpad
 bindsym --to-code $mod+comma scratchpad show
 bindsym --to-code $mod+Shift+comma move scratchpad
-bindsym --whole-window $mod+button2 exec scratchpad show
+bindsym --whole-window $mod+button2 scratchpad show
 
 # workspaces
 bindsym $mod+1 workspace 1
