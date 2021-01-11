@@ -167,7 +167,7 @@
         - alsa-utils
         - light
         - waybar
-        - terminus-font-otb
+        - terminus-font
         - otf-font-awesome
         - ttf-roboto
         - ttf-roboto-mono
@@ -253,6 +253,7 @@
         - joplin
         - v4l2loopback-dkms
         - obs-v4l2sink
+        - clipman
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
