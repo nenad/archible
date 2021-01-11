@@ -152,7 +152,7 @@
         - zsh
         - zip
         - nnn
-          #- firefox
+        - firefox
         - docker
         - docker-compose
         - code
@@ -248,9 +248,9 @@
         - wdisplays
         - wlogout
         - xdg-desktop-portal-wlr
-        - fedora-firefox-wayland-bin
+        # - fedora-firefox-wayland-bin
         - swappy
-        - joplin
+        - joplin-appimage
         - v4l2loopback-dkms
         - obs-v4l2sink
         - clipman
