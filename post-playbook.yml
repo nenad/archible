@@ -84,22 +84,6 @@
       state: started
       scope: system
 
-  - name: Enable clipmenu
-    tags: ["systemd", "systemd-user"]
-    systemd:
-      enabled: True
-      name: clipmenud
-      state: started
-      scope: user
-
-  - name: Enable pulseaudio
-    tags: ["systemd", "systemd-user"]
-    systemd:
-      enabled: True
-      name: pulseaudio
-      state: started
-      scope: user
-
   - name: Enable pipewire
     tags: ["systemd", "systemd-user"]
     systemd:
@@ -145,7 +129,6 @@
         # Community
         - sway
         - pavucontrol
-        - pulseaudio
         - alacritty
         - termite # maybe to be deleted
         - htop
@@ -159,7 +142,6 @@
         - xorg-server-xwayland
         - gopass
         - bemenu
-        - clipmenu
         - strace
         - bemenu-wlroots
         - fwupd
