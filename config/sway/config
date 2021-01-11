@@ -280,6 +280,8 @@ exec thunderbird
 exec kanshi
 exec nm-applet --indicator
 exec gammastep-indicator
+# TODO Convert to systemd unit
+exec wl-paste --type text --watch clipman store
 
 #############################################################
 #=====================  Applications  =======================
@@ -288,7 +290,7 @@ exec gammastep-indicator
 # Application
 bindsym           $mod+Return exec alacritty
 bindsym --to-code $mod+n exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
-bindsym --to-code Ctrl+Shift+w exec "env CM_LAUNCHER='bemenu' clipmenu -p Clipboard -l 5 -i --fn Terminus 16"
+bindsym --to-code Ctrl+Shift+w exec "clipman pick -t CUSTOM -T'bemenu -p Clipboard -l 5 -i --fn Terminus 16'"
 bindsym --to-code $mod+d exec j4-dmenu-desktop --dmenu='bemenu -p Launch -i -l 5 --fn Terminus 16' --term='alacritty'
 bindsym --to-code $mod+p exec gopass list --flat | bemenu -p Password -i -l 5 --fn Terminus 16 | xargs gopass show --password | wl-copy
 bindsym --to-code $mod+Shift+p exec gopass list --flat | bemenu -p OTP -i -l 5 --fn Terminus 16 | xargs gopass otp --password | wl-copy
