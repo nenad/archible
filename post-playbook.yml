@@ -215,6 +215,9 @@
         - gammastep
         - linux-headers
         - anki
+        - intel-gpu-tools
+        - paperwork
+        - sane-airscan
         # AUR
         - terminus-font-ttf
         - goland
@@ -236,6 +239,7 @@
         - v4l2loopback-dkms
         - obs-v4l2sink
         - clipman
+        - uhk-agent-appimage
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
