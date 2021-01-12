@@ -45,6 +45,7 @@ bindsym --to-code $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym --to-code $mod+Shift+space floating toggle
+bindsym --to-code $mod+Alt+space sticky toggle
 
 # focus the parent container
 bindsym --to-code $mod+o focus parent
@@ -134,7 +135,7 @@ no_focus [class="[tT]hunderbird"]
 floating_modifier $mod
 hide_edge_borders smart
 workspace_auto_back_and_forth yes
-focus_follows_mouse no
+focus_follows_mouse yes
 mouse_warping none
 focus_wrapping yes
 popup_during_fullscreen smart
@@ -156,6 +157,7 @@ font Terminus 8
 #############################################################
 
 for_window [app_id="[cC]hromium"] border none
+for_window [app_id="[sS]lack"] border none
 for_window [app_id="[fF]irefox"] border none
 for_window [class=".*"] border pixel 1
 gaps inner 0
@@ -179,11 +181,11 @@ output eDP-1 {
 }
 
 output $externalHorizontal {
-	background ~/.config/sway/luca-bravo-ESkw2ayO2As-unsplash.jpg fill
+	background ~/.config/sway/black-hole.jpg fill
 }
 
 output $externalVertical {
-	background ~/.config/sway/luca-bravo-ESkw2ayO2As-unsplash.jpg fill
+	background ~/.config/sway/black-hole.jpg fill
 }
 
 #############################################################
@@ -270,9 +272,10 @@ for_window [class="DBeaver" instance="DBeaver" title="^Connection .*"] floating 
 for_window [class="DBeaver" instance="DBeaver" title="^Data Transfer.*"] floating enable
 for_window [app_id="^$" instance="^$" title="^$"] floating enable
 for_window [title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="blueberry.py"] floating enable
 
 #############################################################
-#=======================  Autostart  ========================
+#=======================  AutoStart  ========================
 #############################################################
 
 exec systemctl --user set-environment DISPLAY=$DISPLAY
@@ -282,6 +285,7 @@ exec nm-applet --indicator
 exec gammastep-indicator
 # TODO Convert to systemd unit
 exec wl-paste --type text --watch clipman store
+exec mako
 
 #############################################################
 #=====================  Applications  =======================
