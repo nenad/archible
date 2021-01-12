@@ -70,21 +70,23 @@ tx_rate=$(( $tx_diff / $time_diff ))
 # 1024^2 = 1048576, then display MiB/s instead
 
 # incoming
-echo -n ""
+
+outText="$INTERFACE "
 rx_kib=$(( $rx_rate >> 10 ))
 if [[ "$rx_rate" -gt 1048576 ]]; then
-  printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`"
+	outText="${outText} $(printf '%sM' "`echo "scale=1; $rx_kib / 1024" | bc`")"
 else
-  echo -n "${rx_kib}K"
+	outText="${outText} ${rx_kib}K"
 fi
 
-echo -n " "
 
 # outgoing
-echo -n ""
+outText="${outText} "
 tx_kib=$(( $tx_rate >> 10 ))
 if [[ "$tx_rate" -gt 1048576 ]]; then
-  printf '%sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
+	outText="${outText} $(printf '%sM' "`echo "scale=1; $tx_kib / 1024" | bc`")"
 else
-  echo -n "${tx_kib}K"
+	outText="${outText} ${tx_kib}K"
 fi
+
+echo -n "${outText}"

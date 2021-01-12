@@ -6,7 +6,7 @@ else
 	display="$(printf '%15s' '')"
 fi
 
-result=$(ping -4 -c 1 google.com -w 2)
+result=$(ping -4 -c 1 google.com -w 1)
 success=$(echo "${result}" | grep received | cut -d "," -f2 | sed 's/received//' | tr --delete " ")
 time=$(echo "${result}" | grep ttl | cut -d " " -f8 | sed 's/time=//')
 
