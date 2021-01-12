@@ -1,6 +1,12 @@
+# Preload work related configuration
+if [ -f $HOME/.workrc ]; then
+	source $HOME/.workrc
+fi
+
 # oh-my-zsh setup
 export ZSH=/usr/share/oh-my-zsh
-plugins=(git)
+# allows for plugins to be added in the .workrc
+plugins+=(git)
 source $ZSH/oh-my-zsh.sh
 
 autoload -U select-word-style
@@ -41,7 +47,3 @@ alias grrr="git rebase --interactive origin/master"
 alias gdrd="git stash && git checkout master && git pull && git checkout - && git rebase origin/master && git stash pop"
 alias gs="git status"
 alias gddd="git branch --merged=master | grep -v master | xargs git branch -D"
-
-if [ -f $HOME/.workrc ]; then
-	source $HOME/.workrc
-fi
