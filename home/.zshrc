@@ -3,6 +3,9 @@ export ZSH=/usr/share/oh-my-zsh
 plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
+autoload -U select-word-style
+select-word-style bash
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=10000
