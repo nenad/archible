@@ -130,7 +130,6 @@
         - sway
         - pavucontrol
         - alacritty
-        - termite # maybe to be deleted
         - htop
         - zsh
         - zip
