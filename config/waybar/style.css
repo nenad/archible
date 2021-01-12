@@ -78,6 +78,7 @@ window#waybar.chromium {
 #custom-temp,
 #custom-bandwidth,
 #custom-ping,
+#custom-tasks,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -132,6 +133,12 @@ label:focus {
 
 #custom-temp {
     background-color: #FF7161;
+}
+
+#custom-tasks {
+    background-color: #ca6c8b;
+    padding: 0 20px;
+    margin: 0 4px;
 }
 
 #cpu {

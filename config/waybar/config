@@ -4,25 +4,43 @@
     // "height": 24, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["sway/workspaces", "sway/mode"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
     "modules-center": [],
-    "modules-right": ["custom/bandwidth", "custom/ping", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "custom/temp", "backlight", "battery", "clock", "tray", "custom/power"],
+    "modules-right": [
+        "custom/bandwidth",
+        "custom/ping",
+        "custom/tasks",
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "cpu",
+        "memory",
+        "custom/temp",
+        "backlight",
+        "battery",
+        "clock",
+        "tray",
+        "custom/power"
+    ],
     // Modules configuration
     "sway/workspaces": {
-        "disable-scroll": false,
+        "disable-scroll": true,
         "all-outputs": false,
         "format": "{name}",
-	"smooth-scrolling-threshold": 1,
-	"enable-bar-scroll": false,
-	"disable-scroll-wraparound": true
+        "smooth-scrolling-threshold": 1,
+        "enable-bar-scroll": false,
+        "disable-scroll-wraparound": true
     },
     "sway/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
     "sway/window": {
         "format": "",
-	// "on-scroll-up": "swaymsg workspace prev",
-	// "on-scroll-down": "swaymsg workspace next",
+        // "on-scroll-up": "swaymsg workspace prev",
+        // "on-scroll-down": "swaymsg workspace next",
         "tooltip": false
     },
     "idle_inhibitor": {
@@ -33,32 +51,40 @@
         }
     },
     "custom/bandwidth": {
-	"exec": "$HOME/.config/waybar/bandwidth.sh",
-	"interval": 2,
-	"tooltip": false
+        "exec": "$HOME/.config/waybar/bandwidth.sh",
+        "interval": 1,
+        "tooltip": false,
+        "output": "!eDP-1"
+    },
+    "custom/tasks": {
+        "on-click": "swaymsg scratchpad show",
+        "format": "&#xf46c;",
+        "tooltip": false,
+        "interval": 0
     },
     "custom/ping": {
-	"exec": "$HOME/.config/waybar/ping.sh",
-	"interval": 1,
-	"tooltip": false
+        "exec": "$HOME/.config/waybar/ping.sh",
+        "interval": 1,
+        "tooltip": false,
+        "output": "eDP-1"
     },
     "custom/temp": {
-	"exec": "$HOME/.config/waybar/temp.sh",
-	"interval": 3,
-	"tooltip": false
+        "exec": "$HOME/.config/waybar/temp.sh",
+        "interval": 3,
+        "tooltip": false
     },
     "custom/power": {
-	"format": "&#xf011;",
+        "format": "&#xf011;",
         "on-click": "wlogout",
-	"interval": 0,
-	"tooltip": false
+        "interval": 0,
+        "tooltip": false
     },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
     },
     "clock": {
-    	"format": "{:%a, %b %d - %H:%M} ",
+        "format": "{:%a, %b %d - %H:%M} ",
         "tooltip-format": "{:%Y-%m-%d | %H:%M}",
         "format-alt": "{:%Y-%m-%d}"
     },
@@ -75,15 +101,22 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", ""],
-	"on-scroll-up": "light -A 5",
-	"on-scroll-down": "light -U 5",
-	"smooth-scrolling-threshold": 1
+        "format-icons": [
+            "",
+            ""
+        ],
+        "on-scroll-up": "light -A 5",
+        "on-scroll-down": "light -U 5",
+        "smooth-scrolling-threshold": 1
     },
     "battery": {
         "states": {
@@ -97,7 +130,13 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "battery#bat2": {
         "bat": "BAT2"
@@ -125,7 +164,11 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
@@ -141,4 +184,3 @@
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
     }
 }
-
