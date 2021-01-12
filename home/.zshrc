@@ -36,8 +36,11 @@ alias dex='docker exec -it'
 
 # Git aliases
 alias gdd="git diff --cached"
+alias grrrr="git stash && git rebase --interactive origin/master && git stash pop"
 alias grrr="git rebase --interactive origin/master"
 alias gdrd="git stash && git checkout master && git pull && git checkout - && git rebase origin/master && git stash pop"
+alias gs="git status"
+alias gddd="git branch --merged=master | grep -v master | xargs git branch -D"
 
 if [ -f $HOME/.workrc ]; then
 	source $HOME/.workrc
