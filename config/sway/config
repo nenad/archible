@@ -86,15 +86,15 @@ bindsym $mod+Shift+0 move container to workspace 10
 
 # set workspaces to monitors
 workspace 1 output $externalHorizontal
-workspace 2 output $internal
+workspace 2 output $externalHorizontal
 #workspace 3 output $externalVertical
 workspace 3 output $externalHorizontal
 workspace 4 output $externalHorizontal
-workspace 5 output $internal
+workspace 5 output $externalHorizontal
 workspace 6 output $internal
 workspace 7 output $externalHorizontal
 workspace 8 output $externalHorizontal
-workspace 9 output $internal
+workspace 9 output $externalHorizontal
 workspace 10 output $internal
 
 # development
