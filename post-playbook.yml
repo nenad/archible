@@ -217,6 +217,8 @@
         - intel-gpu-tools
         - paperwork
         - sane-airscan
+        - exfatprogs
+        - exfat-utils
         # AUR
         - terminus-font-ttf
         - goland
