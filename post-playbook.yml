@@ -219,6 +219,7 @@
         - sane-airscan
         - exfatprogs
         - exfat-utils
+        - nethogs
         # AUR
         - terminus-font-ttf
         - goland
