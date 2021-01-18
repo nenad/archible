@@ -138,7 +138,7 @@
         - docker
         - docker-compose
         - code
-        - xorg-server-xwayland
+        - xorg-xwayland
         - gopass
         - bemenu
         - strace
