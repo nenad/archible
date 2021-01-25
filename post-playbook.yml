@@ -137,7 +137,7 @@
         - firefox
         - docker
         - docker-compose
-        - code
+          #- code
         - xorg-xwayland
         - gopass
         - bemenu
@@ -242,6 +242,8 @@
         - obs-v4l2sink
         - clipman
         - uhk-agent-appimage
+        # chaotic-aur
+        - visual-studio-code-insiders-bin
 
   - name: Link .config dotfiles
     tags: ["dotfiles"]
