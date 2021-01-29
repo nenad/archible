@@ -286,6 +286,7 @@ exec gammastep-indicator
 # TODO Convert to systemd unit
 exec wl-paste --type text --watch clipman store
 exec mako
+exec headset_listener
 
 #############################################################
 #=====================  Applications  =======================
