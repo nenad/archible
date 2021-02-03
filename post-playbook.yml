@@ -137,7 +137,7 @@
         - firefox
         - docker
         - docker-compose
-          #- code
+        - visual-studio-code-insiders-bin
         - xorg-xwayland
         - gopass
         - bemenu
