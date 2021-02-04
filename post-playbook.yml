@@ -149,6 +149,7 @@
         - light
         - waybar
         - terminus-font
+        - terminus-font-ttf # For Java apps
         - otf-font-awesome
         - ttf-roboto
         - ttf-roboto-mono
@@ -220,6 +221,8 @@
         - exfatprogs
         - exfat-utils
         - nethogs
+        - iw
+        - dhclient
         # AUR
         - terminus-font-ttf
         - goland
