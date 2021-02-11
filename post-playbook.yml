@@ -223,6 +223,7 @@
         - nethogs
         - iw
         - dhclient
+        - mtr
         # AUR
         - terminus-font-ttf
         - goland
