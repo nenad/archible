@@ -140,6 +140,7 @@
         - visual-studio-code-insiders-bin
         - xorg-xwayland
         - gopass
+        - calibre
         - bemenu
         - strace
         - bemenu-wlroots
@@ -149,6 +150,7 @@
         - light
         - waybar
         - terminus-font
+        - virtualbox
         - terminus-font-ttf # For Java apps
         - otf-font-awesome
         - ttf-roboto
