@@ -1,0 +1,299 @@
+#############################################################
+#=======================  Variables  ========================
+#############################################################
+
+# Keycodes -- Used with different keyboard layouts
+# Windows button
+set $mod Mod4 
+set $escape 9
+set $f1 67
+
+set $q 24
+set $w 25
+set $e 26
+set $r 27
+set $t 28
+set $y 29
+set $u 30
+set $i 31
+set $o 32
+set $p 33
+
+set $a 38
+set $s 39
+set $d 40
+set $f 41
+set $g 42
+set $h 43
+set $j 44
+set $k 45
+set $l 46
+set $semicolon 47
+
+set $z 52
+set $x 53
+set $c 54
+set $v 55
+set $b 55
+set $n 56
+# Cannot set $m as for some reason collides with $mod
+set $comma 59
+set $space 65
+
+# monitors
+set $internal eDP1
+set $external DP1
+
+
+#############################################################
+#=======================  Navigation  =======================
+#############################################################
+
+# change focus
+bindcode $mod+$h focus left
+bindcode $mod+$j focus down
+bindcode $mod+$k focus up
+bindcode $mod+$l focus right
+bindcode $mod+$space workspace back_and_forth
+bindcode $mod+$escape [urgent=latest] focus
+
+# move focused window
+bindcode $mod+Shift+$h move left
+bindcode $mod+Shift+$j move down
+bindcode $mod+Shift+$k move up
+bindcode $mod+Shift+$l move right
+
+# move workspaces to monitors
+bindcode $mod+Ctrl+Shift+$j move workspace to output down
+bindcode $mod+Ctrl+Shift+$k move workspace to output up
+bindcode $mod+Ctrl+Shift+$h move workspace to output left
+bindcode $mod+Ctrl+Shift+$l move workspace to output right
+
+# splits
+bindcode $mod+$semicolon split h
+bindcode $mod+$v split v
+
+# enter fullscreen mode for the focused container
+bindcode $mod+$f fullscreen toggle
+
+# change container layout (tabbed, toggle split)
+bindcode $mod+$w layout tabbed
+bindcode $mod+$e layout toggle split
+
+# toggle tiling / floating
+bindcode $mod+Shift+$space floating toggle
+
+# focus the parent container
+bindcode $mod+$o focus parent
+bindcode $mod+$s focus child
+
+# scratchpad
+bindcode $mod+$comma scratchpad show
+bindcode $mod+Shift+$comma move scratchpad
+bindsym --whole-window $mod+button2 exec --no-startup-id i3-msg 'scratchpad show'
+
+# workspaces
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+#############################################################
+#======================  Workspaces  ========================
+#############################################################
+
+# assign workspaces to monitors
+workspace 1 output $external
+workspace 2 output $external
+workspace 3 output $external
+workspace 4 output $external
+workspace 5 output $external
+workspace 6 output $internal
+workspace 7 output $external
+workspace 8 output $external
+workspace 9 output $external
+workspace 10 output $internal
+
+# development
+assign [class="jetbrains-goland"] 3
+no_focus [class="jetbrains-goland"]
+assign [class="jetbrains-phpstorm"] 3
+no_focus [class="jetbrains-phpstorm"]
+assign [class="postman"] 9
+no_focus [class="dbeaver"]
+assign [class="dbeaver"] 8
+
+# postman
+no_focus [class="postman"]
+assign [class="Postman"] 9
+
+# browsers
+assign [class="[fF]irefox" window_role="browser"] 4
+assign [class="[gG]oogle-chrome" window_role="browser"] 4
+assign [class="[cC]hromium" window_role="browser"] 10
+
+# mail
+assign [class="[tT]hunderbolt"] 7
+no_focus [class="[tT]hunderbolt"]
+
+
+#############################################################
+#========================  Options  =========================
+#############################################################
+
+floating_modifier $mod
+hide_edge_borders smart
+workspace_auto_back_and_forth yes
+focus_follows_mouse yes
+mouse_warping none
+force_focus_wrapping no
+popup_during_fullscreen smart
+
+#############################################################
+#=========================  Style  ==========================
+#############################################################
+
+# Font
+font pango:DejaVu Sans Mono 8
+
+# Colors
+client.focused          #59b7d6 #138bb2 #ffffff
+client.focused_inactive #0f0c0d #4f4c4d #ffffff
+client.unfocused        #4f4c4d #4f4c4d #ffffff
+client.urgent           #ffffff #ff0000 #ffffff 
+
+#############################################################
+#==========================  Bars  ==========================
+#############################################################
+
+exec_always --no-startup-id polybar_startup.sh
+
+#############################################################
+#=========================  Modes  ==========================
+#############################################################
+
+# Resize
+mode "resize" {
+        bindcode $h resize shrink width 10 px or 10 ppt
+        bindcode $j resize grow height 10 px or 10 ppt
+        bindcode $k resize shrink height 10 px or 10 ppt
+        bindcode $l resize grow width 10 px or 10 ppt
+
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindcode $mod+$r mode "resize"
+
+# TODO Change this with a GUI
+# Shutdown module
+set $mode_system [l]      [e]      [s]      [r]      [S] 
+mode "$mode_system" {
+    bindcode $l exec --no-startup-id sh ~/Scripts/i3exit.sh lock, mode "default"
+    bindcode $e exec --no-startup-id sh ~/Scripts/i3exit.sh logout, mode "default"
+    bindcode $s exec --no-startup-id sh ~/Scripts/i3exit.sh suspend, mode "default"
+    bindcode $h exec --no-startup-id sh ~/Scripts/i3exit.sh hibernate, mode "default"
+    bindcode $r exec --no-startup-id sh ~/Scripts/i3exit.sh reboot, mode "default"
+    bindcode Shift+$s exec --no-startup-id sh ~/Scripts/i3exit.sh shutdown, mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Shift+BackSpace mode "$mode_system"
+
+# Keyboard layout
+set $keyboardMode Keyboard (u) us, (d) de, (k) mk
+mode "$keyboardMode" {
+    bindcode $u exec --no-startup-id "setxkbmap -layout 'us' && xmodmap ~/.Xmodmap", mode "default"
+    bindcode $d exec --no-startup-id "setxkbmap -layout 'de' && xmodmap ~/.Xmodmap", mode "default"
+    bindcode $k exec --no-startup-id "setxkbmap -layout 'mk' && xmodmap ~/.Xmodmap", mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindcode $mod+Shift+$i mode "$keyboardMode"
+
+#############################################################
+#===================  Floating windows  =====================
+#############################################################
+
+for_window [class="[fF]irefox"] border pixel 0
+for_window [class="[gG]oogle-chrome"] border pixel 0
+for_window [class="sun-awt-X11-XFramePeer"] floating enable
+for_window [class="sun-awt-X11-XDialogPeer"] floating enable
+for_window [class="[pP]inentry"] fullscreen; fullscreen; focus floating
+for_window [window_role="EventSummaryDialog"] floating enable
+for_window [window_role="EventDialog"] floating enable
+for_window [window_role="GtkFileChooserDialog"] floating enable
+for_window [title="Authy"] floating enable
+for_window [title="win0"] floating enable
+
+#############################################################
+#=======================  Autostart  ========================
+#############################################################
+
+exec --no-startup-id nm-applet
+exec --no-startup-id gammastep-indicator # Berlin coordinates
+exec --no-startup-id greenclip daemon
+exec --no-startup-id dunst
+exec --no-startup-id aw-qt
+
+#############################################################
+#=====================  Applications  =======================
+#############################################################
+
+# Application
+bindsym            $mod+Return exec alacritty
+bindcode 	   Ctrl+Shift+$w exec --no-startup-id "rofi -modi 'clipboard:greenclip print' -show clipboard"
+bindcode --release $mod+$d exec --no-startup-id rofi -show drun -show-icons
+
+# Pulse Audio controls
+bindsym --release XF86AudioRaiseVolume exec "amixer -q sset Master 5%+ && pkill -RTMIN+10 i3blocks"
+bindsym --release XF86AudioLowerVolume exec "amixer -q sset Master 5%- && pkill -RTMIN+10 i3blocks"
+bindsym --release XF86AudioMute exec "amixer -q sset Master toggle && pkill -RTMIN+10 i3blocks"
+
+# Screen brightness controls
+bindsym --release XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym --release XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
+
+# Media player controls
+bindsym --release XF86AudioPlay exec "playerctl play-pause && pkill -RTMIN+9 i3blocks"
+bindsym --release XF86AudioNext exec "playerctl next && pkill -RTMIN+9 i3blocks"
+bindsym --release XF86AudioPrev exec "playerctl previous && pkill -RTMIN+9 i3blocks"
+# -- using normal keys
+bindcode --release $mod+Ctrl+$k exec "playerctl play-pause && pkill -RTMIN+9 i3blocks"
+bindcode --release $mod+Ctrl+$l exec "playerctl next && pkill -RTMIN+9 i3blocks"
+bindcode --release $mod+Ctrl+$h exec "playerctl previous && pkill -RTMIN+9 i3blocks"
+
+# Screenshot
+bindcode --release Shift+107 exec "scrot -s ~/Pictures/Screenshot%Y-%m-%d-%H-%M-%S.png"
+bindcode --release 107 exec "scrot ~/Pictures/Screenshot%Y-%m-%d-%H-%M-%S.png"
+
+# i3 binds
+bindcode $mod+Shift+$q kill
+bindcode $mod+Shift+$c reload
+bindcode $mod+Shift+$r restart
+bindcode $mod+Shift+$e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
