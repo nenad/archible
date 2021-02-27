@@ -126,6 +126,16 @@
     aur:
       state: present
       name:
+        # X and i3
+        - i3
+        - xorg-server
+        - polybar
+        - siji # font for polybar
+        - ttf-unifont # font for polybar
+        - rofi
+        - arandr
+        - dunst
+        - rofi-greenclip
         # Community
         - sway
         - pavucontrol
