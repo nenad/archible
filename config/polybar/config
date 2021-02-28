@@ -126,10 +126,13 @@ label-empty-padding = 2
 ; label-separator = |
 
 [module/i3]
+
 type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+
+strip-wsnumbers = true
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
@@ -139,28 +142,39 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${colors.background-alt}
 label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
+
+;ws-icon-0 = "1:term;term"
+;ws-icon-1 = "2:term;<insert-icon-here>"
+;ws-icon-2 = "3:code;<insert-icon-here>"
+;ws-icon-3 = "4:web;<insert-icon-here>"
+;ws-icon-4 = "5:slack;<insert-icon-here>"
+;ws-icon-5 = "6:music;<insert-icon-here>"
+;ws-icon-6 = "7:mail;<insert-icon-here>"
+;ws-icon-7 = "8:db;<insert-icon-here>"
+;ws-icon-8 = "9:api;<insert-icon-here>"
+;ws-icon-9 = "10:meet;<insert-icon-here>"
 
 
 [module/mpd]

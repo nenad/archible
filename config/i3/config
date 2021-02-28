@@ -92,66 +92,77 @@ bindcode $mod+$comma scratchpad show
 bindcode $mod+Shift+$comma move scratchpad
 bindsym --whole-window $mod+button2 exec --no-startup-id i3-msg 'scratchpad show'
 
+set $ws1 "1:term"
+set $ws2 "2:term"
+set $ws3 "3:code"
+set $ws4 "4:web"
+set $ws5 "5:slack"
+set $ws6 "6:music"
+set $ws7 "7:mail"
+set $ws8 "8:db"
+set $ws9 "9:api"
+set $ws10 "10:meet"
+
 # workspaces
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 #############################################################
 #======================  Workspaces  ========================
 #############################################################
 
 # assign workspaces to monitors
-workspace 1 output $external
-workspace 2 output $external
-workspace 3 output $external
-workspace 4 output $external
-workspace 5 output $external
-workspace 6 output $internal
-workspace 7 output $external
-workspace 8 output $external
-workspace 9 output $external
-workspace 10 output $internal
+workspace $ws1 output $external
+workspace $ws2 output $external
+workspace $ws3 output $external
+workspace $ws4 output $external
+workspace $ws5 output $external
+workspace $ws6 output $internal
+workspace $ws7 output $external
+workspace $ws8 output $external
+workspace $ws9 output $external
+workspace $ws10 output $internal
 
 # development
-assign [class="jetbrains-goland"] 3
+assign [class="jetbrains-goland"] $ws3
 no_focus [class="jetbrains-goland"]
-assign [class="jetbrains-phpstorm"] 3
+assign [class="jetbrains-phpstorm"] $ws3
 no_focus [class="jetbrains-phpstorm"]
-assign [class="postman"] 9
+assign [class="postman"] $ws9
 no_focus [class="dbeaver"]
-assign [class="dbeaver"] 8
+assign [class="dbeaver"] $ws8
 
 # postman
 no_focus [class="postman"]
-assign [class="Postman"] 9
+assign [class="Postman"] $ws9
 
 # browsers
-assign [class="[fF]irefox" window_role="browser"] 4
-assign [class="[gG]oogle-chrome" window_role="browser"] 4
-assign [class="[cC]hromium" window_role="browser"] 10
+assign [class="[fF]irefox" window_role="browser"] $ws4
+assign [class="[gG]oogle-chrome" window_role="browser"] $ws4
+assign [class="[cC]hromium" window_role="browser"] $ws10
 
 # mail
-assign [class="[tT]hunderbolt"] 7
+assign [class="[tT]hunderbolt"] $ws7
 no_focus [class="[tT]hunderbolt"]
 
 
