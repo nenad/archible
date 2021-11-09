@@ -28,14 +28,6 @@
   # - three partitions are used (1 EFI, 1 swap, 1 root)
 
   tasks:
-  - name: Get /run/archiso/cowspace available bytes
-    shell: 'df /run/archiso/cowspace --output=avail | tail -1'
-    register: cowspace_bytes
-
-  - fail:
-      msg: The /run/archiso/cowspace available space is less than 700 MB. Restart with kernel parameter 'cow_spacesize=1G'
-      when: cowspace_bytes.stdout|float is lt 700000
-
   - name: Compare passwords
     fail:
       msg: Disk encryption passwords are not the same
