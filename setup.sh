@@ -8,6 +8,10 @@ if [ "$bytes_free" -lt 1048576 ]; then
 	exit 1
 fi
 
+if ! grep -q localhost /etc/ansible/hosts; then
+	echo 'localhost' > /etc/ansible/hosts
+fi
+
 pacman -S --needed ansible
 
-ansible-playbook -i 127.0.0.1, -K init-playbook.yml
+ansible-playbook init-playbook.yml
